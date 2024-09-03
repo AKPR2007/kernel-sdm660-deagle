@@ -15,11 +15,9 @@ jobs:
     steps:
 
     - run: sudo apt update -y && sudo apt upgrade -y
-    - run: mkdir build && cd build
     - run: sudo apt install wget unzip -y
     - run: wget https://github.com/hairoes/kernel-sdm660/archive/refs/tags/V7.zip
     - run: unzip V7.zip
-    - run: ls
     - run: cd kernel-sdm660-7
-    - run: ls
-    - run: sudo ./build
+    - run: ls && sudo ./build
+      working-directory: ./kernel-sdm660-7
