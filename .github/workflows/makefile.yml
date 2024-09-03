@@ -1,0 +1,24 @@
+name: Makefile CI
+
+on:
+  push:
+    branches: [ "deagle" ]
+  pull_request:
+    branches: [ "deagle" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - run: sudo apt update -y && sudo apt upgrade -y
+    - run: cd ../ && mkdir build && cd build
+    - run: sudo apt install wget unzip -y
+    - run: wget https://github.com/hairoes/kernel-sdm660/archive/refs/tags/V7.zip
+    - run: unzip V7.zip
+    - run: cd kernel-sdm660-7
+    - run: sudo ./build
